@@ -1,338 +1,1013 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zogambo Studios — Mobile Gaming Studio</title>
-  <meta name="description" content="Zogambo Studios is an independent mobile gaming studio crafting hyper-casual games loved by millions." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #FDF6EE; --warm: #F9EDD8; --peach: #F2C4A0;
-      --coral: #E8856A; --rose: #E8A598; --gold: #F0C96B; --sage: #B5CDBA;
-      --ink: #2C2420; --ink-mid: #6B5B55; --ink-lt: #A8948E;
-      --white: #FFFFFF; --card-r: 24px; --ease: cubic-bezier(.22,.68,0,1.2);
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--warm); }
-    ::-webkit-scrollbar-thumb { background: var(--peach); border-radius: 99px; }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zogambo Studios | Games People Can't Put Down</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary-container": "#5b32fa",
+          "primary": "#c8bfff",
+          "surface": "#131313",
+          "on-surface-variant": "#c9c4d9",
+          "surface-container": "#201f1f",
+          "surface-container-high": "#2a2a2a",
+          "surface-container-highest": "#353534",
+          "surface-container-lowest": "#0e0e0e",
+          "on-surface": "#ffffff",
+          "on-background": "#ffffff",
+          "background": "#0e0e0e",
+          "outline-variant": "#474556",
+          "surface-tint": "#5b32fa",
+          "on-primary-container": "#dcd4ff",
+        },
+        fontFamily: { sans: ["Manrope", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 60px;
-      transition: background .4s ease, box-shadow .4s ease, padding .4s ease;
-    }
-    nav.scrolled { background: rgba(253,246,238,.92); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(44,36,32,.08); padding: 14px 60px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-mark { width: 40px; height: 40px; background: var(--coral); border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .logo-mark::before { content: ''; position: absolute; width: 18px; height: 18px; border: 3px solid var(--white); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .logo-mark::after { content: ''; position: absolute; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-    .logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: var(--ink); letter-spacing: -.3px; }
-    .logo-text span { color: var(--coral); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-size: 14px; font-weight: 500; letter-spacing: .3px; color: var(--ink-mid); text-decoration: none; transition: color .2s; }
-    .nav-links a:hover { color: var(--coral); }
-    .nav-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 99px; transition: background .2s, transform .2s !important; }
-    .nav-cta:hover { background: var(--coral) !important; transform: translateY(-1px); }
+  :root {
+    --primary: #5b32fa;
+    --primary-dim: rgba(91,50,250,0.15);
+    --primary-glow: rgba(91,50,250,0.4);
+    --surface: #0e0e0e;
+    --surface-1: #131313;
+    --surface-2: #1c1b1b;
+    --surface-3: #2a2a2a;
+    --on-surface: #ffffff;
+    --on-surface-dim: rgba(255,255,255,0.5);
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(91,50,250,0.4);
+    --ease: cubic-bezier(0.16,1,0.3,1);
+  }
 
-    /* HERO */
-    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242,196,160,.45) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(181,205,186,.4) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 90% 70%, rgba(240,201,107,.3) 0%, transparent 60%); background-color: var(--cream); }
-    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; animation: float 8s ease-in-out infinite; }
-    .blob-1 { width: 400px; height: 400px; background: var(--peach); top: -100px; right: -80px; }
-    .blob-2 { width: 300px; height: 300px; background: var(--sage); bottom: 0; left: -60px; animation-delay: -3s; }
-    .blob-3 { width: 200px; height: 200px; background: var(--gold); bottom: 80px; right: 10%; animation-delay: -5s; }
-    @keyframes float { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
-    .hero-content { position: relative; z-index: 2; max-width: 780px; }
-    h1 { font-family: 'Fraunces', serif; font-size: clamp(52px, 9vw, 100px); font-weight: 900; line-height: .95; letter-spacing: -3px; color: var(--ink); margin-bottom: 28px; opacity: 0; animation: fadeUp .9s var(--ease) .15s forwards; }
-    h1 em { font-style: italic; color: var(--coral); }
-    .hero-sub { font-size: 18px; line-height: 1.65; color: var(--ink-mid); font-weight: 300; max-width: 520px; margin: 0 auto 44px; opacity: 0; animation: fadeUp .9s var(--ease) .3s forwards; }
-    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp .9s var(--ease) .45s forwards; }
-    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--coral); color: var(--white); padding: 16px 32px; border-radius: 99px; font-size: 15px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: transform .25s var(--ease), box-shadow .25s; box-shadow: 0 4px 24px rgba(232,133,106,.4); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(232,133,106,.5); }
-    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--ink); padding: 16px 32px; border-radius: 99px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1.5px solid rgba(44,36,32,.15); transition: border-color .2s, background .2s, transform .25s var(--ease); }
-    .btn-secondary:hover { border-color: var(--coral); background: rgba(232,133,106,.06); transform: translateY(-3px); }
-    .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-lt); letter-spacing: 1px; text-transform: uppercase; opacity: 0; animation: fadeIn 1s ease 1.2s forwards; }
-    .scroll-hint::after { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, var(--peach), transparent); animation: scrollLine 2s ease infinite; }
-    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--surface);
+    color: var(--on-surface);
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-    /* SECTIONS */
-    section { padding: 120px 60px; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--coral); margin-bottom: 20px; }
-    .section-label::before { content: ''; width: 24px; height: 2px; background: var(--coral); border-radius: 2px; }
-    h2 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 60px); font-weight: 700; line-height: 1.05; letter-spacing: -2px; color: var(--ink); margin-bottom: 20px; }
-    .lead { font-size: 18px; line-height: 1.7; color: var(--ink-mid); font-weight: 300; max-width: 560px; }
+  /* ── CUSTOM CURSOR ─────────────────────────────────────── */
+  #cursor-dot {
+    width: 8px; height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.1s var(--ease), background 0.2s;
+    transform: translate(-50%, -50%);
+  }
+  #cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(91,50,250,0.7);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0; z-index: 9998;
+    pointer-events: none;
+    transition: transform 0.18s var(--ease), width 0.25s var(--ease), height 0.25s var(--ease), border-color 0.2s, background 0.2s;
+    transform: translate(-50%, -50%);
+  }
+  body:has(a:hover) #cursor-ring,
+  body:has(button:hover) #cursor-ring {
+    width: 56px; height: 56px;
+    background: rgba(91,50,250,0.08);
+    border-color: var(--primary);
+  }
 
-    /* ABOUT */
-    #about { background: var(--white); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-visual { position: relative; height: 480px; }
-    .about-card { position: absolute; background: var(--cream); border-radius: var(--card-r); padding: 32px; box-shadow: 0 8px 40px rgba(44,36,32,.08); }
-    .about-card.main { inset: 0; background: linear-gradient(145deg, #FDF0E8, #FFF8F2); display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
-    .about-card.main::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 60%; background: linear-gradient(160deg, var(--peach) 0%, var(--rose) 40%, var(--sage) 100%); border-radius: var(--card-r) var(--card-r) 60% 60%; opacity: .7; }
-    .about-art { position: absolute; top: 40px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; gap: 14px; }
-    .art-circle { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
-    .art-c1 { background: var(--gold); } .art-c2 { background: var(--coral); margin-top: 24px; } .art-c3 { background: var(--sage); }
-    .about-card-text { position: relative; z-index: 2; }
-    .about-card-text h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-    .about-card-text p { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
-    .stat-card { position: absolute; background: var(--white); border-radius: 16px; padding: 24px; box-shadow: 0 8px 30px rgba(44,36,32,.1); z-index: 2; }
-    .stat-card.s1 { bottom: 20px; right: -24px; width: 160px; }
-    .stat-card.s2 { top: 30px; right: -10px; width: 140px; }
-    .stat-num { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 900; color: var(--coral); }
-    .stat-lbl { font-size: 12px; color: var(--ink-lt); margin-top: 2px; }
-    .about-values { display: flex; flex-direction: column; gap: 20px; margin-top: 44px; }
-    .value-item { display: flex; gap: 18px; align-items: flex-start; }
-    .value-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-    .vi-1 { background: rgba(240,201,107,.2); } .vi-2 { background: rgba(232,133,106,.15); } .vi-3 { background: rgba(181,205,186,.25); }
-    .value-item h4 { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
-    .value-item p { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+  /* ── NOISE TEXTURE OVERLAY ─────────────────────────────── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 1;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
 
-    /* GAMES */
-    #games { background: var(--cream); }
-    .games-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; gap: 24px; flex-wrap: wrap; }
-    .games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .game-card { background: var(--white); border-radius: var(--card-r); overflow: hidden; box-shadow: 0 4px 24px rgba(44,36,32,.07); transition: transform .35s var(--ease), box-shadow .35s; }
-    .game-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(44,36,32,.13); }
-    .game-thumb { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 64px; position: relative; overflow: hidden; }
-    .gt-1 { background: linear-gradient(135deg, #FFE8C8, #FFDAB8); }
-    .gt-2 { background: linear-gradient(135deg, #D8EED8, #C8E4C8); }
-    .gt-3 { background: linear-gradient(135deg, #E8D8F0, #D8C8E8); }
-    .game-thumb-label { position: absolute; bottom: 14px; left: 14px; background: rgba(255,255,255,.85); backdrop-filter: blur(8px); border-radius: 8px; padding: 4px 12px; font-size: 11px; font-weight: 500; color: var(--ink-mid); letter-spacing: .5px; text-transform: uppercase; }
-    .game-info { padding: 24px; }
-    .game-info h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-    .game-info p { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
-    .game-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-    .tag { font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 99px; letter-spacing: .3px; }
-    .tag-coral { background: rgba(232,133,106,.12); color: var(--coral); }
-    .tag-sage  { background: rgba(181,205,186,.25); color: #6B9B70; }
-    .tag-gold  { background: rgba(240,201,107,.2);  color: #B08A1A; }
-    .tag-rose  { background: rgba(232,165,152,.2);  color: #B05A50; }
+  /* ── CANVAS PARTICLES ──────────────────────────────────── */
+  #particles-canvas {
+    position: fixed; inset: 0; z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+  }
 
-    /* CONTACT */
-    #contact { background: var(--warm); }
-    .contact-centered { max-width: 640px; margin: 0 auto; text-align: center; }
-    .contact-centered h3 { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 700; color: var(--ink); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 20px; }
-    .contact-centered p { font-size: 17px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 48px; }
-    .contact-email-card { display: inline-flex; align-items: center; gap: 18px; padding: 24px 36px; background: var(--white); border-radius: 20px; text-decoration: none; box-shadow: 0 4px 32px rgba(44,36,32,.1); transition: transform .3s var(--ease), box-shadow .3s; }
-    .contact-email-card:hover { transform: translateY(-4px); box-shadow: 0 12px 48px rgba(44,36,32,.15); }
-    .contact-email-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(232,133,106,.12); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-    .contact-email-text { text-align: left; }
-    .contact-email-label { font-size: 12px; color: var(--ink-lt); margin-bottom: 4px; letter-spacing: .3px; }
-    .contact-email-value { font-size: 18px; font-weight: 500; color: var(--ink); }
+  /* ── GLOW UTILITIES ────────────────────────────────────── */
+  .glow { filter: drop-shadow(0 0 20px var(--primary-glow)); }
+  .glow-sm { box-shadow: 0 0 20px var(--primary-glow); }
+  .glass {
+    background: rgba(32,31,31,0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border);
+  }
 
-    /* FOOTER */
-    footer { background: var(--ink); color: rgba(255,255,255,.5); padding: 48px 60px; }
-    .footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .footer-logo .logo-mark { opacity: .85; }
-    .footer-logo-text { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: var(--white); }
-    .footer-nav { display: flex; gap: 28px; }
-    .footer-nav a { font-size: 13px; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
-    .footer-nav a:hover { color: var(--coral); }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-copy { font-size: 13px; }
-    .footer-legal { display: flex; gap: 20px; }
-    .footer-legal a { font-size: 13px; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
-    .footer-legal a:hover { color: var(--coral); }
+  /* ── NAV ───────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,14,14,0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 40px rgba(0,0,0,0.6); }
+  .nav-link {
+    position: relative; color: rgba(255,255,255,0.5);
+    font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--primary);
+    transition: width 0.3s var(--ease);
+  }
+  .nav-link:hover { color: #fff; }
+  .nav-link:hover::after { width: 100%; }
+  .btn-primary {
+    background: var(--primary);
+    color: #fff; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 10px 24px; border-radius: 999px;
+    border: none; cursor: none;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s;
+    box-shadow: 0 0 20px var(--primary-glow);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px var(--primary-glow), 0 8px 24px rgba(91,50,250,0.5);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: #fff; font-size: 16px; font-weight: 600;
+    padding: 18px 40px; border-radius: 999px;
+    border: 2px solid rgba(255,255,255,0.2); cursor: none;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s var(--ease);
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.04);
+    transform: translateY(-2px);
+  }
+  .btn-hero {
+    background: var(--primary); color: #fff;
+    font-size: 16px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 18px 40px; border-radius: 999px; border: none; cursor: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s;
+    box-shadow: 0 0 30px var(--primary-glow);
+  }
+  .btn-hero:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 60px var(--primary-glow), 0 12px 40px rgba(91,50,250,0.5);
+  }
 
-    /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .8s var(--ease); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: .1s; } .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; } .reveal-delay-4 { transition-delay: .4s; }
+  /* ── SCROLL REVEAL ─────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+  .reveal-left {
+    opacity: 0; transform: translateX(-50px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+  .reveal-right {
+    opacity: 0; transform: translateX(50px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+  .reveal-scale {
+    opacity: 0; transform: scale(0.9);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal-scale.revealed { opacity: 1; transform: scale(1); }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; } nav.scrolled { padding: 12px 24px; }
-      .nav-links { display: none; }
-      section { padding: 80px 24px; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-visual { height: 320px; }
-      .games-grid { grid-template-columns: repeat(2,1fr); }
-      footer { padding: 40px 24px; }
-      .stat-card.s1, .stat-card.s2 { right: 0; }
-    }
-    @media (max-width: 560px) {
-      h1 { letter-spacing: -2px; }
-      .games-grid { grid-template-columns: 1fr; }
-      .footer-top, .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .contact-email-card { flex-direction: column; text-align: center; }
-      .contact-email-text { text-align: center; }
-    }
-  </style>
+  .delay-100 { transition-delay: 0.1s; }
+  .delay-200 { transition-delay: 0.2s; }
+  .delay-300 { transition-delay: 0.3s; }
+  .delay-400 { transition-delay: 0.4s; }
+  .delay-500 { transition-delay: 0.5s; }
+
+  /* ── HERO ──────────────────────────────────────────────── */
+  .hero-section {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 20px 100px;
+    position: relative; overflow: hidden;
+  }
+  .hero-glow-1 {
+    position: absolute; width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(91,50,250,0.18) 0%, transparent 70%);
+    border-radius: 50%; top: -100px; left: -200px;
+    animation: driftGlow1 12s ease-in-out infinite;
+  }
+  .hero-glow-2 {
+    position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(91,50,250,0.12) 0%, transparent 70%);
+    border-radius: 50%; bottom: -100px; right: -150px;
+    animation: driftGlow2 15s ease-in-out infinite;
+  }
+  .hero-glow-3 {
+    position: absolute; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(200,191,255,0.07) 0%, transparent 70%);
+    border-radius: 50%; top: 40%; left: 60%;
+    animation: driftGlow3 18s ease-in-out infinite;
+  }
+  @keyframes driftGlow1 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(80px,-60px) scale(1.1); }
+    66% { transform: translate(-40px,80px) scale(0.95); }
+  }
+  @keyframes driftGlow2 {
+    0%,100% { transform: translate(0,0) scale(1); }
+    40% { transform: translate(-70px,50px) scale(1.08); }
+    70% { transform: translate(50px,-40px) scale(0.92); }
+  }
+  @keyframes driftGlow3 {
+    0%,100% { transform: translate(0,0); }
+    50% { transform: translate(-60px,60px); }
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 9vw, 88px);
+    font-weight: 800; line-height: 1.0;
+    letter-spacing: -0.04em; color: #fff;
+    opacity: 0; animation: heroFadeUp 1.1s var(--ease) 0.2s forwards;
+  }
+  .hero-title .accent {
+    color: var(--primary);
+    font-style: italic; font-weight: 300;
+    filter: drop-shadow(0 0 20px rgba(91,50,250,0.5));
+    animation: accentPulse 4s ease-in-out 1.5s infinite;
+  }
+  @keyframes accentPulse {
+    0%,100% { filter: drop-shadow(0 0 20px rgba(91,50,250,0.5)); }
+    50% { filter: drop-shadow(0 0 40px rgba(91,50,250,0.9)); }
+  }
+  .hero-sub {
+    font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.5);
+    max-width: 560px; margin: 0 auto;
+    opacity: 0; animation: heroFadeUp 1.1s var(--ease) 0.45s forwards;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: heroFadeUp 1.1s var(--ease) 0.65s forwards;
+  }
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating grid lines */
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(91,50,250,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,50,250,0.5) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridShift 20s linear infinite;
+  }
+  @keyframes gridShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 48px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.25);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    animation: heroFadeUp 1s var(--ease) 1.2s forwards; opacity: 0;
+  }
+  .scroll-hint::after {
+    content: ''; width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--primary), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── ABOUT ─────────────────────────────────────────────── */
+  .about-img-wrap {
+    position: relative; border-radius: 32px; overflow: hidden;
+    aspect-ratio: 1/1; border: 1px solid var(--border);
+  }
+  .about-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(100%);
+    transform: scale(1.06);
+    transition: filter 1s var(--ease), transform 1s var(--ease);
+  }
+  .about-img-wrap:hover img {
+    filter: grayscale(0%); transform: scale(1);
+  }
+  .about-img-wrap::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, #0e0e0e 0%, transparent 50%);
+  }
+
+  /* Floating stats card */
+  .stats-card {
+    position: absolute; bottom: -32px; right: -16px;
+    padding: 28px 32px; border-radius: 24px;
+    border: 1px solid rgba(91,50,250,0.25);
+    animation: statsFloat 4s ease-in-out infinite;
+  }
+  @media (min-width: 768px) { .stats-card { right: 48px; } }
+  @keyframes statsFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .stat-number {
+    font-size: 40px; font-weight: 800;
+    letter-spacing: -0.03em; color: var(--primary);
+    line-height: 1;
+  }
+
+  .value-icon {
+    flex-shrink: 0; width: 56px; height: 56px;
+    border-radius: 16px; background: var(--surface-3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--primary); border: 1px solid rgba(71,69,86,0.3);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .value-item:hover .value-icon {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(91,50,250,0.3);
+  }
+
+  /* ── GAMES CARDS ───────────────────────────────────────── */
+  .game-card {
+    border-radius: 40px; padding: 20px;
+    transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.4s;
+    cursor: none;
+  }
+  .game-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(91,50,250,0.4) !important;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(91,50,250,0.1);
+  }
+  .game-thumb {
+    border-radius: 28px; overflow: hidden;
+    aspect-ratio: 4/3; margin-bottom: 28px;
+    border: 1px solid rgba(255,255,255,0.05);
+    background: var(--surface-3); position: relative;
+  }
+  .game-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.6;
+    transition: transform 0.7s var(--ease), opacity 0.4s;
+  }
+  .game-card:hover .game-thumb img { transform: scale(1.08); opacity: 1; }
+
+  .game-badge {
+    position: absolute; top: 20px; left: 20px;
+    background: var(--primary); color: #fff;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 999px;
+    filter: drop-shadow(0 0 8px rgba(91,50,250,0.6));
+  }
+  .tag {
+    padding: 6px 16px; border-radius: 999px;
+    background: var(--surface-3);
+    color: rgba(255,255,255,0.5);
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid rgba(71,69,86,0.3);
+  }
+
+  /* ── CONTACT ───────────────────────────────────────────── */
+  .contact-card {
+    border-radius: 48px; padding: 60px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.4s;
+  }
+  .contact-card::before {
+    content: ''; position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(91,50,250,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    transition: transform 0.6s var(--ease);
+  }
+  .contact-card:hover::before { transform: scale(1.5); }
+  .contact-card:hover { border-color: rgba(91,50,250,0.3) !important; }
+
+  .email-link {
+    font-size: clamp(22px, 4vw, 40px);
+    font-weight: 800; letter-spacing: -0.02em; color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline-block;
+    position: relative;
+  }
+  .email-link::after {
+    content: ''; position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 2px;
+    background: var(--primary);
+    transition: width 0.4s var(--ease);
+  }
+  .email-link:hover { color: #c8bfff; }
+  .email-link:hover::after { width: 100%; }
+
+  /* ── FOOTER ────────────────────────────────────────────── */
+  footer {
+    background: #0a0a0a;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo-mark {
+    width: 48px; height: 48px; border-radius: 16px;
+    background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900;
+    box-shadow: 0 0 20px var(--primary-glow);
+    animation: logoGlow 3s ease-in-out infinite;
+  }
+  @keyframes logoGlow {
+    0%,100% { box-shadow: 0 0 20px var(--primary-glow); }
+    50% { box-shadow: 0 0 40px rgba(91,50,250,0.7); }
+  }
+
+  /* ── SECTION LABEL ─────────────────────────────────────── */
+  .section-label {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-label-line {
+    height: 2px; width: 48px;
+    background: var(--primary);
+  }
+  .section-label-text {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  /* ── COUNTER ANIMATION ─────────────────────────────────── */
+  .counter { display: inline-block; }
+
+  /* ── MOBILE MENU ───────────────────────────────────────── */
+  .mobile-menu {
+    display: none; flex-direction: column; gap: 16px;
+    padding: 20px; background: rgba(14,14,14,0.97);
+    border-bottom: 1px solid var(--border);
+    position: absolute; top: 100%; left: 0; right: 0;
+    backdrop-filter: blur(20px);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(255,255,255,0.6); font-size: 16px; font-weight: 600; text-decoration: none; }
+
+  /* ── SCAN LINE EFFECT ──────────────────────────────────── */
+  @keyframes scanLine {
+    0% { top: -5%; }
+    100% { top: 105%; }
+  }
+
+  /* ── TYPING CURSOR ─────────────────────────────────────── */
+  .typing-cursor {
+    display: inline-block; width: 3px; height: 0.85em;
+    background: var(--primary); margin-left: 2px;
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* ── SECTION DIVIDER ───────────────────────────────────── */
+  .section-divider {
+    height: 1px; width: 100%;
+    background: linear-gradient(to right, transparent, rgba(91,50,250,0.3), transparent);
+  }
+
+  /* ── RESPONSIVE ────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    #cursor-dot, #cursor-ring { display: none; }
+    .hero-title { font-size: clamp(40px,10vw,60px); }
+    .hero-section { padding: 100px 20px 80px; }
+    .stats-card { right: 0; }
+    .contact-card { padding: 40px 28px; border-radius: 32px; }
+    .email-link { font-size: 20px; }
+  }
+</style>
 </head>
-<body>
+<body class="antialiased">
 
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Particles Canvas -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAV -->
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">
-    <div class="logo-mark"></div>
-    <span class="logo-text">Zogambo<span>.</span></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#games">Games</a></li>
-    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
-  </ul>
+  <div style="max-width:1440px; margin:0 auto; padding:0 64px; display:flex; align-items:center; justify-content:space-between; height:68px;">
+    <a href="#" style="font-size:22px; font-weight:900; letter-spacing:-0.03em; color:#fff; text-decoration:none;">Zogambo Studios</a>
+    <div class="hidden md:flex" style="gap:36px; align-items:center;">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#games">Games</a>
+      <a class="btn-primary" href="#contact" style="text-decoration:none;">Contact Us</a>
+    </div>
+    <button id="menu-toggle" class="md:hidden" style="background:none; border:none; color:var(--primary); cursor:none; padding:8px;">
+      <span class="material-symbols-outlined" style="font-size:28px;">menu</span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#games" onclick="closeMobileMenu()">Games</a>
+    <a href="#contact" onclick="closeMobileMenu()" style="color:var(--primary);">Contact Us</a>
+  </div>
 </nav>
 
-<section id="hero">
-  <div class="hero-bg">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
-  <div class="hero-content">
-    <h1>Games people<br /><em>can't put down.</em></h1>
-    <p class="hero-sub">Zogambo Studios crafts hyper-casual mobile games that hook players in seconds and keep them coming back for more.</p>
-    <div class="hero-actions">
-      <a href="#games" class="btn-primary">Explore Our Games →</a>
-      <a href="#contact" class="btn-secondary">Work With Us</a>
+<main style="position:relative; z-index:2;">
+
+<!-- HERO -->
+<section class="hero-section" id="hero">
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-glow-3"></div>
+  <div class="hero-grid"></div>
+
+  <div style="position:relative; z-index:2; max-width:900px; width:100%;">
+    <div style="margin-bottom:28px; opacity:0; animation: heroFadeUp 1s ease 0.05s forwards;">
+      <span style="font-size:11px; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:var(--primary); background:rgba(91,50,250,0.1); border:1px solid rgba(91,50,250,0.25); padding:8px 20px; border-radius:999px; display:inline-block;">
+        Independent Mobile Gaming Studio
+      </span>
+    </div>
+
+    <h1 class="hero-title" style="margin-bottom:28px;">
+      Games people<br/>
+      <span class="accent" id="hero-accent">can't put down.</span>
+    </h1>
+
+    <p class="hero-sub" style="margin-bottom:48px;">
+      Zogambo Studios crafts hyper-casual mobile games that hook players in seconds and keep them coming back for more.
+    </p>
+
+    <div class="hero-actions" style="margin-bottom:0;">
+      <button class="btn-hero" onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'})">
+        Explore Our Games
+        <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        Work With Us
+      </button>
     </div>
   </div>
+
   <div class="scroll-hint">Scroll</div>
 </section>
 
-<section id="about">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-visual reveal">
-        <div class="about-card main">
-          <div class="about-art">
-            <div class="art-circle art-c1">🎯</div>
-            <div class="art-circle art-c2">🚀</div>
-            <div class="art-circle art-c3">🎨</div>
-          </div>
-          <div class="about-card-text">
-            <h3>Built to publish.</h3>
-            <p>Every prototype is designed with publisher KPIs in mind from day one.</p>
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about" style="padding:120px 64px; max-width:1440px; margin:0 auto;">
+  <div style="display:grid; grid-template-columns:1fr; gap:80px; align-items:center;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;" class="about-grid-inner">
+
+      <!-- Image column -->
+      <div class="reveal-left">
+        <div class="about-img-wrap">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLZSNd7zLse2PQjVeh6eewQg2gHJRzNrQuUT8ynaKwmYvwOD7rZXFJPkOT5HA49-7VyU9ob5B0dWNqQ6uY7nv09jEtm08MpV92kxtLNdsMpG3OZpGHFIlbuVbVpaDmZZv_PAZeNxntOJ1E2dCiFv3sCTvDqxFn4nZ6eaiivSl19crt44S4jqx0cfBeBXq0cos4W8rdIhl_Rc51iP6xRqx_Cy8Uu6G4RHkgOtscjwHYS9BZ-Bg4lTxF9WqZJBUyIUjAucsl8VIL0yrn" alt="Zogambo Studio"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, #0e0e0e 0%, transparent 50%); z-index:1;"></div>
+          <div class="stats-card glass">
+            <div class="stat-number counter" data-target="10" data-suffix="M+">0</div>
+            <div style="font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px;">Global Downloads</div>
           </div>
         </div>
-        <div class="stat-card s2"><div class="stat-num">4</div><div class="stat-lbl">Expert Founders</div></div>
-        <div class="stat-card s1"><div class="stat-num">∞</div><div class="stat-lbl">Games to Build</div></div>
       </div>
-      <div>
-        <div class="section-label reveal">About Us</div>
-        <h2 class="reveal reveal-delay-1">Small team.<br />Big ideas.</h2>
-        <p class="lead reveal reveal-delay-2">Zogambo Studios is an independent mobile gaming studio from India, combining technical excellence, creative artistry, and sharp market instincts to build games that publishers love and players adore.</p>
-        <div class="about-values">
-          <div class="value-item reveal reveal-delay-2">
-            <div class="value-icon vi-1">🎯</div>
-            <div><h4>Publisher-first thinking</h4><p>We design every mechanic against real KPI benchmarks — retention, CPI, and session length — before a single line of code is written.</p></div>
+
+      <!-- Text column -->
+      <div class="reveal-right">
+        <div class="section-label">
+          <div class="section-label-line"></div>
+          <span class="section-label-text">About Us</span>
+        </div>
+
+        <h2 style="font-size:clamp(36px,5vw,52px); font-weight:800; line-height:1.05; letter-spacing:-0.03em; margin-bottom:24px;">
+          Small team.<br/>
+          <span style="color:rgba(255,255,255,0.3);">Big ideas.</span>
+        </h2>
+
+        <p style="font-size:17px; line-height:1.75; color:rgba(255,255,255,0.5); margin-bottom:48px;">
+          Zogambo Studios is an independent mobile gaming studio from India, combining technical excellence, creative artistry, and sharp market instincts to build games that publishers love and players adore.
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:32px;">
+          <div class="value-item reveal delay-100" style="display:flex; gap:24px; align-items:flex-start;">
+            <div class="value-icon">
+              <span class="material-symbols-outlined" style="font-size:28px;">target</span>
+            </div>
+            <div>
+              <h4 style="font-size:18px; font-weight:700; color:#fff; margin-bottom:6px;">Publisher-first thinking</h4>
+              <p style="font-size:15px; line-height:1.65; color:rgba(255,255,255,0.45);">We design every mechanic against real KPI benchmarks — retention, CPI, and session length.</p>
+            </div>
           </div>
-          <div class="value-item reveal reveal-delay-3">
-            <div class="value-icon vi-2">⚡</div>
-            <div><h4>Speed without compromise</h4><p>Rapid prototyping powered by two Unity developers working in parallel. We move fast and ship polished.</p></div>
+
+          <div class="value-item reveal delay-200" style="display:flex; gap:24px; align-items:flex-start;">
+            <div class="value-icon">
+              <span class="material-symbols-outlined" style="font-size:28px;">bolt</span>
+            </div>
+            <div>
+              <h4 style="font-size:18px; font-weight:700; color:#fff; margin-bottom:6px;">Speed without compromise</h4>
+              <p style="font-size:15px; line-height:1.65; color:rgba(255,255,255,0.45);">Rapid prototyping powered by two Unity developers working in parallel. We move fast and ship polished.</p>
+            </div>
           </div>
-          <div class="value-item reveal reveal-delay-4">
-            <div class="value-icon vi-3">🎨</div>
-            <div><h4>Art that stands out</h4><p>In-house visual direction with 10+ years of experience. Every game looks and feels premium on first launch.</p></div>
+
+          <div class="value-item reveal delay-300" style="display:flex; gap:24px; align-items:flex-start;">
+            <div class="value-icon">
+              <span class="material-symbols-outlined" style="font-size:28px;">palette</span>
+            </div>
+            <div>
+              <h4 style="font-size:18px; font-weight:700; color:#fff; margin-bottom:6px;">Art that stands out</h4>
+              <p style="font-size:15px; line-height:1.65; color:rgba(255,255,255,0.45);">In-house visual direction with 10+ years of experience. Every game looks and feels premium.</p>
+            </div>
           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- GAMES -->
+<section id="games" style="padding:120px 0; background:#0a0a0a;">
+  <div style="max-width:1440px; margin:0 auto; padding:0 64px;">
+
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:72px; gap:32px; flex-wrap:wrap;">
+      <div class="reveal">
+        <div class="section-label">
+          <div class="section-label-line"></div>
+          <span class="section-label-text">Our Games</span>
+        </div>
+        <h2 style="font-size:clamp(36px,5vw,56px); font-weight:800; letter-spacing:-0.03em; line-height:1.05;">
+          Crafted for the world<br/>to play.
+        </h2>
+      </div>
+      <p class="reveal delay-200" style="font-size:16px; line-height:1.7; color:rgba(255,255,255,0.4); max-width:300px; text-align:right;">
+        High-quality hyper-casual games designed for global audiences and built for publisher success.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px;">
+
+      <!-- Project Alpha -->
+      <div class="game-card glass reveal delay-100" style="border:1px solid var(--border);">
+        <div class="game-thumb">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8w_tFiat6HwFMpJavaTLcJkmVZjxOeC8XUpzS35IlCjasrbT-9AQIwh5zt6D5oOr_pNwicuhCvsfT19YUrerIk4MiFoOmjQcjaWO1TfejAkGqipLSatmXwXjTtoFtrmwQN5bjc6pGw2AQLdpebstr-FnLnx42F_nlY9SFaLG3LfSoa9LUblkv1ziC7PteORo2NKb-3BixZCSrdoi38nabpnzqOrE8KPZjGKNxvsLOqbbY976C4Uf-EboLCnzFXk9bSjdNmChAQpY_" alt="Project Alpha"/>
+          <div class="game-badge">Coming Soon</div>
+        </div>
+        <div style="padding:4px 8px 12px;">
+          <h3 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between;">
+            Project Alpha
+            <span class="material-symbols-outlined" style="color:var(--primary); font-size:24px;">sports_esports</span>
+          </h3>
+          <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.45); margin-bottom:20px;">
+            Our debut title — a fast-paced hyper-casual experience with a twist that keeps players hooked.
+          </p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="tag">Hyper-Casual</span>
+            <span class="tag">In Development</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Bloom -->
+      <div class="game-card glass reveal delay-200" style="border:1px solid var(--border);">
+        <div class="game-thumb">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn17rcEG_xaciv8KKP0ZqvspVuOkv9qzWHEb0O4e4Cu8Kkyn-eeQfD8BOnQ2l686jvEJ6CsguzKPnJbL3DUzv9-ij7FQiIrSS8lXdZFCFOwu38LsCXTL7HaJ6-_L_64vveWED5sCQE2jfiTP30-jRlvYDzgvffPM5T4ZSvwkJ4d7n2A9WVgWfAIJtvo2fEu5UzIvo3zN3rL63fBZPAOaVx4DwPnpxAchOlHCULLgvxWaOqnx5XsLq2AOjqsTuuVxoIqn3nc6WTZ2Yb" alt="Project Bloom"/>
+          <div style="position:absolute; top:20px; left:20px; background:var(--surface-3); color:#fff; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:6px 14px; border-radius:999px; border:1px solid rgba(255,255,255,0.2);">Prototype</div>
+        </div>
+        <div style="padding:4px 8px 12px;">
+          <h3 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between;">
+            Project Bloom
+            <span class="material-symbols-outlined" style="color:var(--primary); font-size:24px;">extension</span>
+          </h3>
+          <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.45); margin-bottom:20px;">
+            A calming yet addictive puzzle mechanic with satisfying progression and tactile visual style.
+          </p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="tag">Puzzle</span>
+            <span class="tag">Prototyping</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- More Coming -->
+      <div class="game-card glass reveal delay-300" style="border:1px dashed rgba(255,255,255,0.15); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; min-height:400px; padding:48px 32px;">
+        <div style="width:80px; height:80px; border-radius:50%; background:rgba(91,50,250,0.1); border:1px solid rgba(91,50,250,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:28px; transition:border-color 0.3s, box-shadow 0.3s;" class="plus-icon">
+          <span class="material-symbols-outlined" style="color:var(--primary); font-size:40px;">add</span>
+        </div>
+        <h3 style="font-size:26px; font-weight:800; color:#fff; margin-bottom:16px;">More Coming</h3>
+        <p style="font-size:14px; line-height:1.7; color:rgba(255,255,255,0.4); margin-bottom:28px; max-width:260px;">
+          We're a multi-prototype studio. New games are always in the pipeline — built fast, tested smart.
+        </p>
+        <span style="display:inline-block; padding:8px 24px; border-radius:999px; background:rgba(91,50,250,0.1); color:var(--primary); font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; border:1px solid rgba(91,50,250,0.3);">Upcoming</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:120px 20px; position:relative; overflow:hidden;">
+  <div style="position:absolute; inset:0; z-index:0; pointer-events:none;">
+    <div style="position:absolute; top:0; left:0; width:500px; height:500px; background:radial-gradient(circle, rgba(91,50,250,0.12) 0%, transparent 70%); border-radius:50%;"></div>
+    <div style="position:absolute; bottom:0; right:0; width:600px; height:600px; background:radial-gradient(circle, rgba(91,50,250,0.08) 0%, transparent 70%); border-radius:50%;"></div>
+  </div>
+
+  <div style="max-width:800px; margin:0 auto; text-align:center; position:relative; z-index:1;">
+    <div class="reveal" style="display:flex; align-items:center; justify-content:center; gap:16px; margin-bottom:28px;">
+      <div style="height:2px; width:32px; background:var(--primary);"></div>
+      <span style="font-size:12px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:var(--primary);">Contact</span>
+      <div style="height:2px; width:32px; background:var(--primary);"></div>
+    </div>
+
+    <h2 class="reveal delay-100" style="font-size:clamp(40px,6vw,64px); font-weight:800; letter-spacing:-0.03em; line-height:1.0; margin-bottom:28px;">
+      Let's build<br/><span style="color:rgba(255,255,255,0.25);">something together.</span>
+    </h2>
+
+    <p class="reveal delay-200" style="font-size:17px; line-height:1.75; color:rgba(255,255,255,0.45); max-width:560px; margin:0 auto 60px;">
+      Whether you're a publisher, a potential partner, or just curious about what we're building — we'd love to hear from you.
+    </p>
+
+    <div class="glass contact-card reveal-scale delay-300" style="border:1px solid var(--border);">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:28px;" class="contact-inner">
+        <div style="width:72px; height:72px; border-radius:20px; background:rgba(91,50,250,0.15); border:1px solid rgba(91,50,250,0.35); display:flex; align-items:center; justify-content:center; color:var(--primary);">
+          <span class="material-symbols-outlined" style="font-size:36px;">mail</span>
+        </div>
+        <div style="text-align:center;">
+          <p style="font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:12px;">Drop us an email</p>
+          <a class="email-link" href="mailto:developer@zogambo.in">developer@zogambo.in</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="games">
-  <div class="section-inner">
-    <div class="games-header">
-      <div>
-        <div class="section-label reveal">Our Games</div>
-        <h2 class="reveal reveal-delay-1">Crafted for<br />the world to play.</h2>
-      </div>
-      <p class="lead reveal" style="max-width:360px;margin:0;">High-quality hyper-casual games designed for global audiences and built for publisher success.</p>
-    </div>
-    <div class="games-grid">
-      <div class="game-card reveal">
-        <div class="game-thumb gt-1">🎮<div class="game-thumb-label">Coming Soon</div></div>
-        <div class="game-info">
-          <h3>Project Alpha</h3>
-          <p>Our debut title — a fast-paced hyper-casual experience with a twist that keeps players hooked from the very first tap.</p>
-          <div class="game-tags"><span class="tag tag-coral">Hyper-Casual</span><span class="tag tag-gold">In Development</span></div>
-        </div>
-      </div>
-      <div class="game-card reveal reveal-delay-1">
-        <div class="game-thumb gt-2">🌿<div class="game-thumb-label">Prototype</div></div>
-        <div class="game-info">
-          <h3>Project Bloom</h3>
-          <p>A calming yet addictive puzzle mechanic with satisfying progression and a warm, inviting visual style.</p>
-          <div class="game-tags"><span class="tag tag-sage">Puzzle</span><span class="tag tag-gold">Prototyping</span></div>
-        </div>
-      </div>
-      <div class="game-card reveal reveal-delay-2">
-        <div class="game-thumb gt-3">✦<div class="game-thumb-label">Concept</div></div>
-        <div class="game-info">
-          <h3>More Coming</h3>
-          <p>We're a multi-prototype studio. New games are always in the pipeline — built fast, tested smart, launched globally.</p>
-          <div class="game-tags"><span class="tag tag-rose">Upcoming</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
-<section id="contact">
-  <div class="section-inner">
-    <div class="contact-centered">
-      <div class="section-label reveal" style="justify-content:center;">Contact</div>
-      <h3 class="reveal reveal-delay-1">Let's build<br />something together.</h3>
-      <p class="reveal reveal-delay-2">Whether you're a publisher, a potential partner, or just curious about what we're building — we'd love to hear from you.</p>
-      <a href="mailto:developer@zogambo.in" class="contact-email-card reveal reveal-delay-3">
-        <div class="contact-email-icon">✉️</div>
-        <div class="contact-email-text">
-          <div class="contact-email-label">Drop us an email</div>
-          <div class="contact-email-value">developer@zogambo.in</div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <a href="#hero" class="footer-logo">
-      <div class="logo-mark"></div>
-      <span class="footer-logo-text">Zogambo Studios</span>
-    </a>
-    <nav class="footer-nav">
-      <a href="#about">About</a>
-      <a href="#games">Games</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 Zogambo Studios. All rights reserved.</div>
-    <div class="footer-legal">
-      <a href="/privacy-policy.html">Privacy Policy</a>
-      <a href="/terms-of-service.html">Terms of Service</a>
+  <div style="max-width:1440px; margin:0 auto; padding:48px 64px; display:flex; flex-direction:column; gap:24px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div class="footer-logo-mark">Z</div>
+        <span style="font-size:20px; font-weight:900; letter-spacing:-0.02em;">Zogambo Studios</span>
+      </div>
+      <nav style="display:flex; gap:32px; align-items:center; flex-wrap:wrap;">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#games">Games</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div style="height:1px; background:linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);"></div>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <span style="font-size:13px; color:rgba(255,255,255,0.3);">© 2025 Zogambo Studios. All rights reserved. Small team. Big ideas.</span>
+      <div style="display:flex; gap:24px;">
+        <a href="/privacy-policy.html" style="font-size:13px; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Privacy Policy</a>
+        <a href="/terms-of-service.html" style="font-size:13px; color:rgba(255,255,255,0.35); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Terms of Service</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <script>
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-    });
+// ── CUSTOM CURSOR ────────────────────────────────────────────
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+  if (dot)  dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+  if (ring) ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// ── PARTICLES ────────────────────────────────────────────────
+const canvas = document.getElementById('particles-canvas');
+const ctx    = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.r  = Math.random() * 1.5 + 0.3;
+    this.a  = Math.random() * 0.5 + 0.1;
+    this.life = 0;
+    this.maxLife = 200 + Math.random() * 300;
+    this.col = Math.random() > 0.5 ? '91,50,250' : '200,191,255';
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy; this.life++;
+    if (this.life > this.maxLife || this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+  }
+  draw() {
+    const alpha = this.a * Math.sin(Math.PI * this.life / this.maxLife);
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.col},${alpha})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  // draw connections
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(91,50,250,${0.08 * (1 - dist/120)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ── NAV SCROLL ───────────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ── MOBILE MENU ──────────────────────────────────────────────
+const menuToggle  = document.getElementById('menu-toggle');
+const mobileMenu  = document.getElementById('mobile-menu');
+if (menuToggle) menuToggle.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('revealed');
+      revObs.unobserve(e.target);
+    }
   });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revObs.observe(el));
+
+// ── COUNTER ANIMATION ─────────────────────────────────────────
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.floor(ease * target) + suffix;
+    if (t < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+// ── ABOUT GRID RESPONSIVE ─────────────────────────────────────
+function checkAboutGrid() {
+  const inner = document.querySelector('.about-grid-inner');
+  if (!inner) return;
+  if (window.innerWidth < 900) {
+    inner.style.gridTemplateColumns = '1fr';
+  } else {
+    inner.style.gridTemplateColumns = '1fr 1fr';
+  }
+}
+checkAboutGrid();
+window.addEventListener('resize', checkAboutGrid);
+
+// ── CONTACT CARD FLEX RESPONSIVE ──────────────────────────────
+function checkContactFlex() {
+  const inner = document.querySelector('.contact-inner');
+  if (!inner) return;
+  if (window.innerWidth >= 768) {
+    inner.style.flexDirection = 'row';
+    inner.style.justifyContent = 'center';
+  } else {
+    inner.style.flexDirection = 'column';
+    inner.style.alignItems = 'center';
+  }
+}
+checkContactFlex();
+window.addEventListener('resize', checkContactFlex);
+
+// ── ABOUT SECTION PADDING RESPONSIVE ──────────────────────────
+function checkPadding() {
+  const about = document.getElementById('about');
+  const games = document.querySelector('#games > div');
+  if (window.innerWidth < 768) {
+    if (about) about.style.padding = '80px 20px';
+    if (games) games.style.padding = '0 20px';
+  } else {
+    if (about) about.style.padding = '120px 64px';
+    if (games) games.style.padding = '0 64px';
+  }
+}
+checkPadding();
+window.addEventListener('resize', checkPadding);
+
+// ── SMOOTH ANCHOR SCROLL ──────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ── PLUS ICON HOVER GLOW ──────────────────────────────────────
+const plusIcon = document.querySelector('.plus-icon');
+if (plusIcon) {
+  plusIcon.closest('.game-card').addEventListener('mouseenter', () => {
+    plusIcon.style.boxShadow = '0 0 30px rgba(91,50,250,0.5)';
+    plusIcon.style.borderColor = 'var(--primary)';
+  });
+  plusIcon.closest('.game-card').addEventListener('mouseleave', () => {
+    plusIcon.style.boxShadow = 'none';
+    plusIcon.style.borderColor = 'rgba(91,50,250,0.3)';
+  });
+}
+
+// ── SECTION RESPONSIVE ────────────────────────────────────────
+function checkFooterPadding() {
+  const footer = document.querySelector('footer > div');
+  if (!footer) return;
+  if (window.innerWidth < 768) {
+    footer.style.padding = '40px 20px';
+    footer.style.flexDirection = 'column';
+    footer.style.textAlign = 'center';
+    const topRow = footer.querySelector('div:first-child');
+    if (topRow) { topRow.style.flexDirection = 'column'; topRow.style.alignItems = 'center'; }
+    const bottomRow = footer.querySelectorAll('div')[2];
+    if (bottomRow) { bottomRow.style.flexDirection = 'column'; bottomRow.style.alignItems = 'center'; }
+  }
+}
+checkFooterPadding();
+window.addEventListener('resize', checkFooterPadding);
 </script>
 </body>
 </html>
