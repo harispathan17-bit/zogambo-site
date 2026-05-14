@@ -1,82 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Privacy Policy — Zogambo Studios</title>
-<meta name="description" content="Privacy Policy for Zogambo Studios — how we collect, use and protect your data across our games and website."/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+<meta name="description" content="Privacy Policy for Zogambo Studios — how we collect, use and protect your data."/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23FF2E63'/%3E%3Ctext x='50' y='72' font-size='60' font-weight='900' font-family='Arial' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --primary: #5b32fa; --primary-glow: rgba(91,50,250,0.35); --surface: #0e0e0e; --border: rgba(255,255,255,0.07); }
   html { scroll-behavior: smooth; }
-  body { background: var(--surface); color: #fff; font-family: 'Manrope', sans-serif; overflow-x: hidden; line-height: 1.7; }
-  body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
-  .ambient { position: fixed; pointer-events: none; border-radius: 50%; filter: blur(120px); z-index: 0; }
-  .amb1 { width: 600px; height: 600px; background: var(--primary); top: -200px; left: -200px; opacity: 0.1; }
-  .amb2 { width: 400px; height: 400px; background: var(--primary); bottom: 10%; right: -100px; opacity: 0.06; }
-  nav { position: sticky; top: 0; z-index: 100; background: rgba(14,14,14,0.87); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
-  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-  .logo-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; box-shadow: 0 0 16px var(--primary-glow); flex-shrink: 0; }
-  .logo-name { font-size: 17px; font-weight: 900; letter-spacing: -0.02em; color: #fff; }
-  .back-link { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; background: rgba(255,255,255,0.03); transition: color 0.2s, border-color 0.2s; }
-  .back-link:hover { color: var(--primary); border-color: rgba(91,50,250,0.3); }
-  .page-wrap { max-width: 800px; margin: 0 auto; padding: 80px 40px 120px; position: relative; z-index: 2; }
-  .page-label { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-  .label-line { width: 32px; height: 2px; background: var(--primary); }
-  .label-text { font-size: 11px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--primary); }
-  .page-title { font-size: clamp(40px,7vw,64px); font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; color: #fff; margin-bottom: 16px; }
-  .page-meta { font-size: 13px; color: rgba(255,255,255,0.28); padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 52px; }
-  .toc { background: rgba(91,50,250,0.06); border: 1px solid rgba(91,50,250,0.18); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; }
-  .toc-title { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--primary); margin-bottom: 16px; }
-  .toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 7px; }
-  .toc li { font-size: 14px; color: rgba(255,255,255,0.5); }
-  .toc a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-  .toc a:hover { color: var(--primary); }
-  .cs { margin-bottom: 52px; scroll-margin-top: 88px; }
-  .cs h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
-  .cs h2::before { content: ''; width: 4px; height: 22px; background: var(--primary); border-radius: 2px; flex-shrink: 0; box-shadow: 0 0 8px var(--primary-glow); }
-  .cs h3 { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.75); margin: 24px 0 10px; letter-spacing: 0.02em; }
-  .cs p { font-size: 15.5px; line-height: 1.82; color: rgba(255,255,255,0.48); margin-bottom: 14px; }
+  body { background: #050507; color: #fff; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.7; }
+  ::selection { background: #FF2E63; color: #fff; }
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #050507; }
+  ::-webkit-scrollbar-thumb { background: #1A1A24; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #FF2E63; }
+
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    opacity: 0.04; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .grid-bg {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.2;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  @keyframes pulse-dot { 0%,100% { box-shadow: 0 0 0 0 rgba(255,46,99,0.6); } 50% { box-shadow: 0 0 0 8px rgba(255,46,99,0); } }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(5,5,7,0.88); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 40px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .pulse { width: 10px; height: 10px; border-radius: 50%; background: #FF2E63; animation: pulse-dot 2s ease-in-out infinite; flex-shrink: 0; }
+  .logo-name { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 16px; letter-spacing: -0.03em; color: #fff; }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4); text-decoration: none;
+    padding: 8px 18px; border: 1px solid rgba(255,255,255,0.08);
+    transition: color .2s, border-color .2s;
+  }
+  .back-btn::before { content: '←'; }
+  .back-btn:hover { color: #FF2E63; border-color: rgba(255,46,99,0.4); }
+
+  /* LAYOUT */
+  .page-wrap { max-width: 800px; margin: 0 auto; padding: 72px 40px 120px; position: relative; z-index: 2; }
+
+  .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .eyebrow-line { width: 40px; height: 2px; background: #FF2E63; flex-shrink: 0; }
+  .eyebrow-text { font-size: 11px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #FF2E63; }
+
+  h1 { font-family: 'Unbounded', sans-serif; font-weight: 900; letter-spacing: -0.04em; font-size: clamp(38px, 7vw, 62px); line-height: 1.0; color: #fff; margin-bottom: 16px; }
+  .meta { font-size: 13px; color: rgba(255,255,255,0.28); padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 48px; }
+
+  /* TOC */
+  .toc { background: rgba(255,46,99,0.05); border: 1px solid rgba(255,46,99,0.16); padding: 28px 32px; margin-bottom: 52px; }
+  .toc-label { font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #FF2E63; margin-bottom: 16px; }
+  .toc ol { padding-left: 18px; display: flex; flex-direction: column; gap: 7px; }
+  .toc li { font-size: 14px; color: rgba(255,255,255,0.4); }
+  .toc a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color .2s; }
+  .toc a:hover { color: #FF2E63; }
+
+  /* SECTIONS */
+  .cs { margin-bottom: 48px; scroll-margin-top: 88px; }
+  .cs h2 { font-family: 'Unbounded', sans-serif; font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .cs h2::before { content: ''; width: 4px; height: 20px; background: #FF2E63; flex-shrink: 0; box-shadow: 0 0 10px rgba(255,46,99,0.5); }
+  .cs h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin: 24px 0 10px; }
+  .cs p { font-size: 15.5px; line-height: 1.82; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
   .cs p:last-child { margin-bottom: 0; }
-  .cs ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
-  .cs li { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.48); display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; transition: border-color 0.2s, background 0.2s; }
-  .cs li:hover { border-color: rgba(91,50,250,0.2); background: rgba(91,50,250,0.04); }
-  .cs li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 9px; box-shadow: 0 0 6px var(--primary-glow); }
-  .cs b { color: rgba(255,255,255,0.75); font-weight: 600; }
-  .hbox { background: rgba(91,50,250,0.07); border: 1px solid rgba(91,50,250,0.2); border-radius: 10px; padding: 20px 24px; margin: 16px 0; }
-  .hbox p { color: rgba(255,255,255,0.58) !important; font-size: 15px !important; margin-bottom: 0 !important; }
-  a { color: var(--primary); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .divider { height: 1px; margin: 52px 0; background: linear-gradient(to right, transparent, rgba(91,50,250,0.2), transparent); }
-  footer { background: #0a0a0a; border-top: 1px solid var(--border); position: relative; z-index: 2; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); }
-  .fl { display: flex; gap: 24px; }
-  .fl a { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
-  .fl a:hover { color: var(--primary); text-decoration: none; }
-  .fl a.active { color: rgba(255,255,255,0.6); }
-  @media (max-width: 600px) { .nav-inner { padding: 0 20px; } .page-wrap { padding: 60px 20px 80px; } .footer-inner { padding: 28px 20px; flex-direction: column; align-items: flex-start; } .toc { padding: 20px; } }
+  .cs ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .cs li {
+    font-size: 15px; line-height: 1.72; color: rgba(255,255,255,0.45);
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color .2s, background .2s;
+  }
+  .cs li:hover { border-color: rgba(255,46,99,0.2); background: rgba(255,46,99,0.04); }
+  .cs li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #FF2E63; flex-shrink: 0; margin-top: 10px; box-shadow: 0 0 6px rgba(255,46,99,0.5); }
+  .cs b { color: rgba(255,255,255,0.72); font-weight: 600; }
+  a { color: #FF2E63; text-decoration: none; } a:hover { text-decoration: underline; }
+
+  .hbox { background: rgba(255,46,99,0.06); border: 1px solid rgba(255,46,99,0.18); padding: 20px 24px; margin: 16px 0; }
+  .hbox p { color: rgba(255,255,255,0.55) !important; font-size: 15px !important; margin-bottom: 0 !important; }
+
+  .divider { height: 1px; margin: 48px 0; background: linear-gradient(to right, transparent, rgba(255,46,99,0.18), transparent); }
+
+  /* FOOTER */
+  footer { background: #050507; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 2; }
+  .foot-inner { max-width: 1120px; margin: 0 auto; padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot-copy { font-size: 13px; color: rgba(255,255,255,0.25); }
+  .foot-links { display: flex; gap: 24px; }
+  .foot-links a { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color .2s; }
+  .foot-links a:hover { color: #FF2E63; }
+  .foot-links a.on { color: rgba(255,255,255,0.65); }
+
+  @media (max-width: 640px) {
+    .nav-inner { padding: 0 20px; }
+    .page-wrap { padding: 52px 20px 80px; }
+    .foot-inner { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    .toc { padding: 20px; }
+  }
 </style>
 </head>
 <body>
-<div class="ambient amb1"></div>
-<div class="ambient amb2"></div>
-<nav><div class="nav-inner">
-  <a href="/" class="nav-logo"><div class="logo-mark">Z</div><span class="logo-name">Zogambo Studios</span></a>
-  <a href="/" class="back-link">← Back to Home</a>
-</div></nav>
+
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="pulse"></span>
+      <span class="logo-name">ZOGAMBO</span>
+      <span style="font-size:10px;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.3);margin-top:1px;">Studios</span>
+    </a>
+    <a href="/" class="back-btn">Back to Home</a>
+  </div>
+</nav>
 
 <div class="page-wrap">
-  <div style="margin-bottom:64px;">
-    <div class="page-label"><div class="label-line"></div><span class="label-text">Legal</span></div>
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Last updated: May 13, 2025 &nbsp;·&nbsp; Zogambo Studios LLP &nbsp;·&nbsp; Mumbai, India</p>
+
+  <div style="margin-bottom:56px;">
+    <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Legal</span></div>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Last updated: May 13, 2025 &nbsp;·&nbsp; Zogambo Studios LLP &nbsp;·&nbsp; Mumbai, India</p>
   </div>
 
   <div class="toc">
-    <p class="toc-title">Table of Contents</p>
+    <p class="toc-label">Table of Contents</p>
     <ol>
       <li><a href="#s1">Who We Are</a></li>
       <li><a href="#s2">Scope of This Policy</a></li>
@@ -98,7 +159,7 @@
 
   <div class="cs" id="s1">
     <h2>1. Who We Are</h2>
-    <p>Zogambo Studios LLP ("Zogambo," "we," "us," or "our") is an independent mobile gaming studio incorporated in India and engaged in the development and publishing of casual mobile games for iOS and Android platforms. Our registered office is located in Mumbai, Maharashtra, India.</p>
+    <p>Zogambo Studios LLP ("Zogambo," "we," "us," or "our") is an independent mobile gaming studio incorporated in India, engaged in the development and publishing of casual mobile games for iOS and Android platforms. Our registered office is located in Mumbai, Maharashtra, India.</p>
     <p>This Privacy Policy applies to all products, services, mobile applications, and websites operated by us, including our website at <a href="https://zogambo.in">zogambo.in</a> and all mobile games we publish (collectively, the "Services").</p>
   </div>
 
@@ -106,33 +167,32 @@
 
   <div class="cs" id="s2">
     <h2>2. Scope of This Policy</h2>
-    <p>This Privacy Policy is an electronic record under the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023 (DPDP Act), along with all applicable rules made thereunder. It is generated by a computer system and does not require any physical or digital signatures.</p>
-    <p>By downloading, installing, accessing, or using any of our Services, you confirm that you have read, understood, and agreed to this Privacy Policy. If you do not agree, please discontinue use of our Services immediately.</p>
-    <div class="hbox"><p>This policy covers how we collect, store, use, share, and protect your personal data — both through our online Services (website and mobile apps) and through any offline interactions such as email correspondence.</p></div>
+    <p>This Privacy Policy is an electronic record under the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023 (DPDP Act), along with all applicable rules made thereunder.</p>
+    <p>By downloading, installing, accessing, or using any of our Services, you confirm that you have read, understood, and agreed to this Privacy Policy. If you do not agree, please discontinue use immediately.</p>
+    <div class="hbox"><p>This policy covers how we collect, store, use, share, and protect your personal data — through our online Services (website and mobile apps) and any offline interactions such as email correspondence.</p></div>
   </div>
 
   <div class="cs" id="s3">
     <h2>3. Information We Collect</h2>
-    <h3>Information You Provide to Us</h3>
+    <h3>Information You Provide</h3>
     <ul>
-      <li>Name and email address when you contact us or correspond with us</li>
-      <li>Messages, feedback, and support requests you send to <a href="mailto:developer@zogambo.in">developer@zogambo.in</a></li>
-      <li>Any information you voluntarily share through our website or in-game contact features</li>
+      <li>Name and email address when you contact or correspond with us</li>
+      <li>Messages, feedback, and support requests sent to <a href="mailto:developer@zogambo.in">developer@zogambo.in</a></li>
+      <li>Any information you voluntarily share through our website or in-game features</li>
     </ul>
     <h3>Information Collected Automatically</h3>
-    <p>When you use our games or visit our website, we and our third-party service partners may automatically collect:</p>
     <ul>
       <li>Device type, model, and operating system version</li>
-      <li>Advertising ID (IDFA on iOS, Google Advertising ID on Android) and Device Identifier</li>
+      <li>Advertising ID (IDFA on iOS, GAID on Android) and Device Identifier</li>
       <li>IP address and approximate geographic location (country and region level)</li>
       <li>App version, installation source, and session metadata</li>
-      <li>Gameplay data — levels reached, session duration, feature usage, and in-game events</li>
+      <li>Gameplay data — levels, session duration, feature usage, in-game events</li>
       <li>Crash logs and diagnostic performance reports</li>
-      <li>In-app purchase records (processed by Apple App Store or Google Play; we do not store payment card details)</li>
+      <li>In-app purchase records processed by Apple App Store or Google Play — we do not store payment card details</li>
     </ul>
     <h3>Information from Third-Party Partners</h3>
     <ul>
-      <li>Attribution data from ad networks, indicating how you discovered our games</li>
+      <li>Attribution data from ad networks indicating how you discovered our games</li>
       <li>Aggregated analytics data from analytics service providers</li>
       <li>Social login data where you use a third-party sign-in, subject to your privacy settings on that platform</li>
     </ul>
@@ -140,28 +200,27 @@
 
   <div class="cs" id="s4">
     <h2>4. Why We Collect Your Information</h2>
-    <p>We collect and process your information to:</p>
     <ul>
       <li>Provide, operate, and maintain our games and website</li>
-      <li>Personalise your gameplay experience and serve the correct app version for your device</li>
-      <li>Analyse game performance, identify bugs, and continuously improve our products</li>
-      <li>Respond to your support requests and communications promptly</li>
+      <li>Personalise your gameplay experience and serve the correct app version</li>
+      <li>Analyse performance, identify bugs, and improve our products</li>
+      <li>Respond to your support requests and communications</li>
       <li>Serve in-game advertisements through our ad network partners</li>
       <li>Measure the effectiveness of our marketing and publisher campaigns</li>
-      <li>Detect, prevent, and investigate fraud, cheating, and security incidents</li>
-      <li>Comply with applicable legal and regulatory obligations under Indian law, including the DPDP Act, 2023 and the IT Act, 2000</li>
+      <li>Detect, prevent, and investigate fraud and security incidents</li>
+      <li>Comply with legal and regulatory obligations under Indian law</li>
     </ul>
   </div>
 
   <div class="cs" id="s5">
     <h2>5. How We Use Your Information</h2>
     <ul>
-      <li><b>Game operation:</b> Device and gameplay data is used to serve the correct app version, maintain game progress, and ensure a stable experience.</li>
-      <li><b>Analytics &amp; improvement:</b> Aggregated, anonymised usage data helps us understand feature engagement and guides our product roadmap.</li>
-      <li><b>Advertising:</b> Advertising IDs are used to serve and measure in-game ads. We do not link Advertising IDs to your personally identifiable information.</li>
-      <li><b>Communication:</b> If you contact us, we use your email address solely to respond. We do not send unsolicited marketing emails.</li>
-      <li><b>Security:</b> IP addresses and device data are used to detect anomalous activity, prevent fraud, and protect our systems and players.</li>
-      <li><b>Legal compliance:</b> We may process and retain data as required by applicable Indian law, including the IT Act, 2000 and the DPDP Act, 2023.</li>
+      <li><b>Game operation:</b> Device and gameplay data is used to serve the correct app version and ensure a stable experience.</li>
+      <li><b>Analytics:</b> Anonymised usage data helps us understand feature engagement and guides our product roadmap.</li>
+      <li><b>Advertising:</b> Advertising IDs are used to serve and measure in-game ads. We do not link them to your personally identifiable information.</li>
+      <li><b>Communication:</b> If you contact us, we use your email solely to respond. We do not send unsolicited marketing emails.</li>
+      <li><b>Security:</b> IP addresses and device data help detect anomalous activity and prevent fraud.</li>
+      <li><b>Legal compliance:</b> We may retain data as required by the IT Act, 2000 and the DPDP Act, 2023.</li>
     </ul>
   </div>
 
@@ -169,111 +228,116 @@
     <h2>6. Sharing Your Information</h2>
     <p>We do not sell, rent, or trade your personal information to any third party for their independent marketing purposes. We share data only in the following limited circumstances:</p>
     <h3>Service Providers</h3>
-    <p>We engage trusted third-party service providers who process data on our behalf under written data processing agreements. These include hosting providers, analytics platforms, and advertising networks. They are permitted to use your data only to perform services for us and are prohibited from using it for any other purpose.</p>
+    <p>We engage trusted third-party providers who process data on our behalf under written data processing agreements. They may only use data to perform services for us.</p>
     <h3>Third-Party Services We Currently Use</h3>
     <ul>
-      <li>Google AdMob — serving in-game advertisements (governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>)</li>
+      <li>Google AdMob — serving in-game advertisements</li>
       <li>Google Firebase — app analytics and crash reporting</li>
       <li>Unity Analytics — gameplay event tracking and session data</li>
-      <li>AppsFlyer or Adjust — marketing attribution (subject to change; see our latest app store listing)</li>
+      <li>AppsFlyer or Adjust — marketing attribution (subject to change)</li>
     </ul>
-    <h3>Legal and Regulatory Obligations</h3>
-    <p>We may disclose your information to government authorities, law enforcement agencies, or courts if required to do so by applicable law, a valid governmental request, or a lawful court order under the IT Act, 2000, the DPDP Act, 2023, or any other applicable Indian statute.</p>
+    <h3>Legal Requirements</h3>
+    <p>We may disclose data to government or law enforcement authorities if required by applicable law, a valid governmental request, or a lawful court order under the IT Act, 2000, the DPDP Act, 2023, or any other applicable Indian statute.</p>
     <h3>Business Transfers</h3>
-    <p>If Zogambo Studios LLP undergoes a merger, acquisition, restructuring, or sale of assets, your information may be transferred to the successor entity as part of that transaction. We will notify you of any such change via our website or app where reasonably practicable.</p>
+    <p>If Zogambo Studios LLP undergoes a merger, acquisition, or sale of assets, your information may transfer to the successor entity. We will notify you where reasonably practicable.</p>
   </div>
 
   <div class="cs" id="s7">
     <h2>7. Third-Party Advertising &amp; Analytics</h2>
-    <p>Our games contain advertisements served by third-party ad networks, primarily Google AdMob. These networks may collect your Advertising ID, IP address, and device data to deliver targeted or contextual advertisements. Their data practices are governed by their own privacy policies.</p>
-    <p>You can limit interest-based advertising at any time:</p>
+    <p>Our games contain advertisements served by third-party ad networks including Google AdMob. These networks may collect your Advertising ID, IP address, and device data to serve targeted or contextual ads. Their practices are governed by their own privacy policies.</p>
+    <p>To limit interest-based advertising:</p>
     <ul>
       <li><b>iOS (14+):</b> Settings → Privacy &amp; Security → Tracking → disable "Allow Apps to Request to Track"</li>
       <li><b>Android:</b> Settings → Google → Ads → "Opt out of Ads Personalisation"</li>
     </ul>
-    <p>Opting out does not remove ads from our games; it means the ads you see may be less relevant to your interests. We use Google Analytics on our website to understand visitor behaviour. You can opt out via the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+    <p>Opting out does not remove ads from our games — it means the ads you see may be less relevant to your interests.</p>
   </div>
 
   <div class="cs" id="s8">
     <h2>8. Cookies and Tracking Technologies</h2>
-    <p>Our website at zogambo.in uses cookies and similar technologies to improve your experience. We use:</p>
+    <p>Our website at zogambo.in uses cookies to improve your experience:</p>
     <ul>
-      <li><b>Essential cookies:</b> Necessary for basic website functionality — these cannot be disabled without affecting site performance</li>
-      <li><b>Analytics cookies:</b> Help us understand how visitors interact with our site, powered by Google Analytics</li>
+      <li><b>Essential cookies:</b> Required for basic website functionality and cannot be disabled without affecting site performance</li>
+      <li><b>Analytics cookies:</b> Help us understand visitor behaviour, powered by Google Analytics</li>
     </ul>
-    <p>You can control or disable cookies via your browser settings. Disabling cookies may affect certain website features but will not affect your ability to download or play our mobile games.</p>
+    <p>You may disable cookies in your browser settings. This may affect website features but will not affect your ability to use our mobile games.</p>
   </div>
 
   <div class="cs" id="s9">
     <h2>9. Children's Privacy</h2>
-    <p>Our Services are intended for a general audience and are not directed at children under 13 years of age. We do not knowingly collect personal information from children under 13.</p>
-    <p>If you are between 13 and 18 years of age, we recommend reviewing this Privacy Policy with a parent or guardian before using our Services.</p>
-    <p>If we become aware that we have inadvertently collected personal information from a child under 13, we will take immediate steps to delete that data. If you believe we may have such information, please contact us immediately at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a>.</p>
+    <p>Our Services are not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If we discover such data has been inadvertently collected, we will delete it immediately.</p>
+    <p>Users aged 13–18 should review this policy with a parent or guardian before using our Services.</p>
+    <p>If you believe we may have collected data from a child under 13, please contact us at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a>.</p>
   </div>
 
   <div class="cs" id="s10">
     <h2>10. Data Retention</h2>
-    <p>We retain your personal information only for as long as necessary to fulfil the purposes described in this policy, provide our Services, comply with our legal obligations, resolve disputes, and enforce our agreements.</p>
-    <p>Gameplay and device data may be retained in anonymised or aggregated form for analytical purposes after the original personal data has been deleted or de-identified.</p>
-    <p>To request deletion of your personal data, email us at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a> with the subject line <b>"Data Deletion Request"</b>. We will process your request within a reasonable timeframe consistent with our legal obligations.</p>
+    <p>We retain personal information only as long as necessary to fulfil the purposes described in this policy, comply with our legal obligations, resolve disputes, and enforce our agreements.</p>
+    <p>Gameplay and device data may be retained in anonymised or aggregated form for analytical purposes after original personal data has been deleted.</p>
+    <p>To request deletion of your data, email us at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a> with the subject line <b>"Data Deletion Request"</b>.</p>
   </div>
 
   <div class="cs" id="s11">
     <h2>11. Your Rights</h2>
-    <p>Under applicable Indian law and, where relevant, the GDPR, you have the following rights regarding your personal data:</p>
     <ul>
       <li><b>Right of access:</b> Request a copy of the personal data we hold about you</li>
       <li><b>Right to rectification:</b> Request correction of inaccurate or incomplete personal data</li>
-      <li><b>Right to erasure:</b> Request deletion of your personal data, subject to any applicable legal retention obligations</li>
-      <li><b>Right to withdraw consent:</b> Withdraw your consent to data processing at any time where processing is consent-based, without affecting the lawfulness of prior processing</li>
-      <li><b>Right to object:</b> Object to certain types of processing, including for direct marketing purposes</li>
-      <li><b>Right to data portability:</b> Where applicable, receive your personal data in a structured, commonly used, machine-readable format</li>
+      <li><b>Right to erasure:</b> Request deletion of your personal data, subject to legal retention obligations</li>
+      <li><b>Right to withdraw consent:</b> Withdraw consent at any time without affecting the lawfulness of prior processing</li>
+      <li><b>Right to object:</b> Object to certain types of processing, including direct marketing</li>
     </ul>
-    <p>To exercise any of these rights, please write to us at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a>. We may ask you to verify your identity before processing your request and will respond within 30 days.</p>
+    <p>To exercise any of these rights, write to <a href="mailto:developer@zogambo.in">developer@zogambo.in</a>. We may ask you to verify your identity before processing your request and will respond within 30 days.</p>
   </div>
 
   <div class="cs" id="s12">
     <h2>12. Data Security</h2>
-    <p>We implement commercially reasonable technical and organisational security measures to protect your personal information from unauthorised access, disclosure, alteration, or destruction. These include data encryption in transit and at rest, restricted access controls, firewalls, and regular security reviews.</p>
-    <div class="hbox"><p>No method of transmission over the internet or electronic storage is 100% secure. While we take all reasonable precautions, we cannot guarantee the absolute security of your data. You transmit information to us at your own risk. We recommend not sharing your account credentials with anyone.</p></div>
-    <p>If you suspect any unauthorised access to your account or a security incident involving our Services, please notify us immediately at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a>.</p>
+    <p>We implement commercially reasonable technical and organisational security measures including data encryption, restricted access controls, firewalls, and regular security reviews.</p>
+    <div class="hbox"><p>No method of internet transmission is 100% secure. We cannot guarantee the absolute security of your data. You transmit information to us at your own risk. We recommend not sharing account credentials with anyone.</p></div>
+    <p>If you suspect any unauthorised access or a security incident involving our Services, please notify us immediately at <a href="mailto:developer@zogambo.in">developer@zogambo.in</a>.</p>
   </div>
 
   <div class="cs" id="s13">
     <h2>13. Grievance Officer</h2>
-    <p>In accordance with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, Zogambo Studios LLP has designated a Grievance Officer to address complaints and concerns regarding this Privacy Policy or the processing of your personal information.</p>
+    <p>In accordance with the Information Technology Act, 2000 and the Digital Personal Data Protection Act, 2023, we have designated a Grievance Officer to address complaints regarding this Privacy Policy or our data practices.</p>
     <div class="hbox">
-      <p><b>Grievance Officer:</b> Haris Pathan<br/>
-      <b>Designation:</b> Founding Partner, Zogambo Studios LLP<br/>
-      <b>Email:</b> <a href="mailto:developer@zogambo.in">developer@zogambo.in</a><br/>
-      <b>Response time:</b> Within 30 days of receipt of complaint</p>
+      <p>
+        <b>Grievance Officer:</b> Haris Pathan<br/>
+        <b>Designation:</b> Founding Partner, Zogambo Studios LLP<br/>
+        <b>Email:</b> <a href="mailto:developer@zogambo.in">developer@zogambo.in</a><br/>
+        <b>Response time:</b> Within 30 days of receipt of complaint
+      </p>
     </div>
-    <p>If you are not satisfied with the resolution provided, you may escalate the matter to the appropriate regulatory authority under applicable Indian law.</p>
   </div>
 
   <div class="cs" id="s14">
     <h2>14. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, applicable law, or for operational reasons. When we make material changes, we will update the "Last updated" date at the top of this page and, where appropriate, notify you via a notice on our website or within our mobile applications.</p>
-    <p>Your continued use of our Services following any update constitutes your acceptance of the revised Privacy Policy. We encourage you to review this page periodically.</p>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, applicable law, or for operational reasons. When we make material changes, we will update the "Last updated" date above and, where appropriate, notify you via our website or in-app notification.</p>
+    <p>Your continued use of our Services following any update constitutes your acceptance of the revised policy.</p>
   </div>
 
   <div class="cs" id="s15">
     <h2>15. Contact Us</h2>
-    <p>For any questions, concerns, or requests related to this Privacy Policy or our data practices, please reach out to us:</p>
     <div class="hbox">
-      <p><b>Zogambo Studios LLP</b><br/>
-      Mumbai, Maharashtra, India<br/>
-      Email: <a href="mailto:developer@zogambo.in">developer@zogambo.in</a><br/>
-      Website: <a href="https://zogambo.in">zogambo.in</a></p>
+      <p>
+        <b>Zogambo Studios LLP</b><br/>
+        Mumbai, Maharashtra, India<br/>
+        <a href="mailto:developer@zogambo.in">developer@zogambo.in</a> &nbsp;·&nbsp; <a href="https://zogambo.in">zogambo.in</a>
+      </p>
     </div>
   </div>
+
 </div>
 
-<footer><div class="footer-inner">
-  <span class="footer-copy">© 2025 Zogambo Studios LLP. All rights reserved.</span>
-  <div class="fl">
-    <a href="/privacy-policy.html" class="active">Privacy Policy</a>
-    <a href="/terms-of-service.html">Terms of Service</a>
+<footer>
+  <div class="foot-inner">
+    <span class="foot-copy">© <span id="yr"></span> Zogambo Studios LLP. All rights reserved.</span>
+    <div class="foot-links">
+      <a href="/privacy-policy.html" class="on">Privacy Policy</a>
+      <a href="/terms-of-service.html">Terms of Service</a>
+    </div>
   </div>
-</div></footer>
-</body></html>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
