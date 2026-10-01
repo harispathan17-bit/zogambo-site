@@ -96,6 +96,7 @@
   .card-cinematic .card-shade { background: linear-gradient(to top, rgba(5,5,7,0.94) 0%, rgba(5,5,7,0.82) 35%, rgba(5,5,7,0.45) 65%, rgba(5,5,7,0) 100%) bottom / 100% 250px no-repeat; pointer-events: none; }
   .card-cinematic h3 { text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
   .card-cinematic p, .card-cinematic .text-mutedx { color: #F3F4F6; font-weight: 600; text-shadow: 0 1px 6px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8); }
+  .card-cinematic .card-link::after { content: ""; position: absolute; inset: 0; }
   .card-cinematic .arrow-btn { transition: all .5s; }
   .card-cinematic:hover .arrow-btn { background:#FF2E63; border-color:#FF2E63; }
   .card-cinematic:hover .arrow-btn svg { transform: rotate(45deg); }
@@ -441,9 +442,9 @@
         <div class="relative h-full p-6 md:p-8 flex flex-col justify-between">
           <div class="flex items-start justify-between gap-4">
             <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-white text-[10px] font-bold uppercase tracking-[0.2em]">PROTOTYPE</span>
-            <button aria-label="Explore" class="arrow-btn w-11 h-11 flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-md">
+            <a href="https://play.google.com/store/apps/details?id=com.zogambo.tubejam" target="_blank" rel="noopener noreferrer" aria-label="Open Tube Jam on Google Play" class="arrow-btn card-link w-11 h-11 flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-md">
               <i data-lucide="arrow-up-right" class="w-5 h-5 text-white"></i>
-            </button>
+            </a>
           </div>
           <div>
             <div class="flex items-center gap-3 mb-3 text-xs text-mutedx uppercase tracking-[0.2em] font-semibold">
@@ -466,9 +467,9 @@
         <div class="relative h-full p-6 md:p-8 flex flex-col justify-between">
           <div class="flex items-start justify-between gap-4">
             <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-white text-[10px] font-bold uppercase tracking-[0.2em]">PROTOTYPE</span>
-            <button aria-label="Explore" class="arrow-btn w-11 h-11 flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-md">
+            <a href="https://play.google.com/store/apps/details?id=com.zogambo.candydrop" target="_blank" rel="noopener noreferrer" aria-label="Open Candy Drop on Google Play" class="arrow-btn card-link w-11 h-11 flex items-center justify-center border border-white/20 bg-white/5 backdrop-blur-md">
               <i data-lucide="arrow-up-right" class="w-5 h-5 text-white"></i>
-            </button>
+            </a>
           </div>
           <div>
             <div class="flex items-center gap-3 mb-3 text-xs text-mutedx uppercase tracking-[0.2em] font-semibold">
